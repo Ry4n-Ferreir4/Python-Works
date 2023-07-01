@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Produtos</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(106, 106, 106);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>70</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: gray;
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+QPushButton:pressed{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: rgb(99, 99, 99);
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>LogOut</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
