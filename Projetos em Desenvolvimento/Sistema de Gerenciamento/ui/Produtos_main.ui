@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>919</width>
+    <height>644</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Produtos</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(106, 106, 106);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="btn_home">
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: gray;
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+QPushButton:pressed{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: rgb(99, 99, 99);
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Home</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_produtos">
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: gray;
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+QPushButton:pressed{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: rgb(99, 99, 99);
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Produtos</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_venda">
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: gray;
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+QPushButton:pressed{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: rgb(99, 99, 99);
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>Venda</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_logout">
+         <property name="font">
+          <font>
+           <pointsize>-1</pointsize>
+           <underline>false</underline>
+           <strikeout>false</strikeout>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: gray;
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+QPushButton:pressed{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: rgb(99, 99, 99);
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+</string>
+         </property>
+         <property name="text">
+          <string>LogOut</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QStackedWidget" name="Pages">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(117, 117, 117);</string>
+      </property>
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="pg_table">
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tables">
+           <attribute name="title">
+            <string>TreeWidget</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <item>
+               <widget class="QLineEdit" name="txt_file">
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(255, 255, 255);
+border-radius:10px;</string>
+                </property>
+                <property name="maxLength">
+                 <number>2000</number>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="btn_open">
+                <property name="text">
+                 <string>Abrir</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_6">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_5">
+                  <item>
+                   <widget class="QLabel" name="label_3">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Estoque</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTreeWidget" name="tw_estoque">
+                    <column>
+                     <property name="text">
+                      <string>Nome Produto</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Estoque</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Valor R$</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_4">
+                  <item>
+                   <widget class="QLabel" name="label_2">
+                    <property name="font">
+                     <font>
+                      <pointsize>12</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>Saida</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QTreeWidget" name="tw_saida">
+                    <column>
+                     <property name="text">
+                      <string>Produto</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Valor</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Quantidade</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Usuario</string>
+                     </property>
+                    </column>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QFrame" name="frame_2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <item>
+                  <widget class="QPushButton" name="btn_atualizar">
+                   <property name="font">
+                    <font>
+                     <pointsize>-1</pointsize>
+                     <underline>false</underline>
+                     <strikeout>false</strikeout>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Importar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: gray;
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+QPushButton:pressed{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: rgb(99, 99, 99);
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+</string>
+                   </property>
+                   <property name="text">
+                    <string>Atualizar</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_gerar">
+                   <property name="font">
+                    <font>
+                     <pointsize>-1</pointsize>
+                     <underline>false</underline>
+                     <strikeout>false</strikeout>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Importar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: gray;
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+QPushButton:pressed{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: rgb(99, 99, 99);
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+</string>
+                   </property>
+                   <property name="text">
+                    <string>Gerar Saida</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btn_estorno">
+                   <property name="font">
+                    <font>
+                     <pointsize>-1</pointsize>
+                     <underline>false</underline>
+                     <strikeout>false</strikeout>
+                    </font>
+                   </property>
+                   <property name="toolTip">
+                    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Importar&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QPushButton{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: gray;
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+QPushButton:pressed{
+text-decoration: none;
+border: none;
+padding: 12px 40px;
+font-size: 16px;
+background-color: rgb(99, 99, 99);
+color: #fff;
+border-radius: 5px;
+box-shadow: 7px 6px 28px 1px rgba(0, 0, 0, 0.24);
+cursor: pointer;
+outline: none;
+transition: 0.2s all;
+}
+</string>
+                   </property>
+                   <property name="text">
+                    <string>Estorno</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_2">
+           <attribute name="title">
+            <string>Tab 2</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pg_venda">
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>200</y>
+          <width>321</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Black</family>
+          <pointsize>21</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Vendas</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="pg_home">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt; font-weight:600;&quot;&gt;Ryan's Company&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:28pt; font-weight:600;&quot;&gt;Sistema de gerenciamento&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
