@@ -34,3 +34,20 @@ Após fazer o login, você terá acesso às funcionalidades do sistema, que incl
 ## Banco de Dados
 
 O programa utiliza um banco de dados SQLite para armazenar os dados do estoque. O arquivo `DB.db` é criado automaticamente ao executar o programa pela primeira vez e contém a tabela "usuarios" com os campos "id" (chave primária), "usuario", "nome", "cargo" e "senha".
+
+## Etapa do Projeto
+
+Interface e sistema de Login ✔
+
+Interface e sistema de Register ✔
+
+Tela principal ✔
+
+Fluxo de produtos 
+
+Geração de planilhas
+
+Importação de XML
+
+
+
