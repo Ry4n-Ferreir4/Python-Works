@@ -49,5 +49,9 @@ Geração de planilhas
 
 Importação de XML
 
+## Atualizações
+
+1.0: Listagem de produtos funcional, login e cadastro funcionando, cadastro de produtos em produção
+
 
 

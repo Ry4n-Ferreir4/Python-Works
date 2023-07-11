@@ -1,6 +1,6 @@
 import typing
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
 
 from ui_main import Ui_TelaMain
 from ui_telaCadastro import Ui_Cadastro
@@ -9,6 +9,7 @@ from ui_telaLogin import Ui_Login
 from validacao import validacao, validacao_login
 from cadastro import cadastrar
 import sqlite3
+import pandas as pd
 
 
 class Tela_principal(QMainWindow, Ui_TelaMain):
@@ -25,6 +26,30 @@ class Tela_principal(QMainWindow, Ui_TelaMain):
         self.btn_venda.clicked.connect(
             lambda: self.Pages.setCurrentWidget(self.pg_venda)
         )
+        self.btn_atualizar.clicked.connect(lambda: self.listar_produtos())
+        self.listar_produtos()
+
+    def listar_produtos(self):
+        # Conecte ao banco de dados
+        conn = sqlite3.connect("Estoque.db")
+        cursor = conn.cursor()
+
+        # Recupere os produtos do banco de dados
+        cursor.execute("SELECT * FROM Produtos")
+        produtos = cursor.fetchall()
+
+        # Defina o número de linhas e colunas da tabela
+        self.tw_estoque.setRowCount(len(produtos))
+        self.tw_estoque.setColumnCount(3)
+
+        # Preencha a tabela com os produtos
+        for row, produto in enumerate(produtos):
+            for col, value in enumerate(produto):
+                item = QTableWidgetItem(str(value))
+                self.tw_estoque.setItem(row, col, item)
+
+        # Feche a conexão com o banco de dados
+        conn.close()
 
 
 class Tela_login(QMainWindow, Ui_Login):
@@ -40,6 +65,7 @@ class Tela_login(QMainWindow, Ui_Login):
         try:
             if validacao_login(usuario, senha) == 3:
                 tela_principal.show()
+                tela_login.close()
                 tela_login.lineEdit.setText("")
                 tela_login.lineEdit_2.setText("")
 
@@ -108,5 +134,5 @@ tela_login.pushButton.clicked.connect(Tela_login.login_ui)
 
 
 if __name__ == "__main__":
-    tela_principal.show()
+    tela_login.show()
     app.exec_()
