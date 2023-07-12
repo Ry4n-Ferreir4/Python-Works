@@ -12,15 +12,17 @@ def gerar_id_venda():
     return id_venda
 
 
+def captar_usuario(ususario):
+    return ususario
+
+
 def venda_produto(cod_prod, quantidade_venda, vendedor):
+    print(vendedor)
     banco_estoque = sqlite3.connect("Estoque.db")
     cursor_estoque = banco_estoque.cursor()
 
     banco_vendas = sqlite3.connect("Vendas.db")
     cursor_vendas = banco_vendas.cursor()
-    cursor_vendas.execute(
-        f"CREATE TABLE IF NOT EXISTS {vendedor} (IDVenda INTEGER PRIMARY KEY, Produto TEXT, Valor REAL,Quantidade INTEGER, Vendedor TEXT,Data TEXT)"
-    )
 
     cursor_estoque.execute(f"SELECT qtdprod FROM produtos WHERE Codprod = '{cod_prod}'")
     qtd_prod_db = cursor_estoque.fetchall()
@@ -46,21 +48,24 @@ def venda_produto(cod_prod, quantidade_venda, vendedor):
     if quantidade_venda_int > qtd_prod_int:
         print("Produtos Insuficintes")
     else:
-        query_venda = f"INSERT INTO {vendedor} (IDVenda, Produto, Valor, Quantidade, Vendedor, Data) VALUES (?, ?, ?, ?, ?, ?)"
-        values = (
-            id_venda,
-            produto_str,
-            valor_da_venda,
-            quantidade_venda_int,
-            vendedor,
-            data,
-        )
+        try:
+            query_venda = f"INSERT INTO '{vendedor}' VALUES (?, ?, ?, ?, ?, ?)"
+            values = (
+                id_venda,
+                produto_str,
+                valor_da_venda,
+                quantidade_venda_int,
+                vendedor,
+                data,
+            )
 
-        cursor_vendas.execute(query_venda, values)
-        banco_vendas.commit()
-        banco_vendas.close()
+            cursor_vendas.execute(query_venda, values)
+            banco_vendas.commit()
+            banco_vendas.close()
 
-        query = "UPDATE produtos SET qtdprod = qtdprod - ? WHERE Codprod = ?"
-        cursor_estoque.execute(query, (quantidade_venda_int, cod_prod))
-        banco_estoque.commit()
-        banco_estoque.close()
+            query = "UPDATE produtos SET qtdprod = qtdprod - ? WHERE Codprod = ?"
+            cursor_estoque.execute(query, (quantidade_venda_int, cod_prod))
+            banco_estoque.commit()
+            banco_estoque.close()
+        except sqlite3.Error as erro:
+            print(erro)

@@ -14,11 +14,12 @@ import sqlite3
 
 
 class Tela_principal(QMainWindow, Ui_TelaMain):
-    def __init__(self) -> None:
+    def __init__(self, tela_saida) -> None:
         super(Tela_principal, self).__init__()
         self.setupUi(self)
         self.setWindowTitle("Tela de Produtos")
 
+        self.tela_saida = tela_saida
         self.btn_home.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_home))
         self.btn_produtos.clicked.connect(
             lambda: self.Pages.setCurrentWidget(self.pg_table)
@@ -27,11 +28,15 @@ class Tela_principal(QMainWindow, Ui_TelaMain):
         self.btn_venda.clicked.connect(
             lambda: self.Pages.setCurrentWidget(self.pg_venda)
         )
-        self.btn_atualizar.clicked.connect(lambda: self.listar_produtos())
+        self.btn_atualizar.clicked.connect(lambda: self.atualizar())
         self.listar_produtos()
         self.btn_cadastrar.clicked.connect(lambda: self.cadastrar_produtos())
         self.btn_open.clicked.connect(lambda: self.procurar_produtos())
         self.btn_gerar.clicked.connect(lambda: self.abrir_saida())
+
+    def atualizar(self):
+        self.listar_produtos()
+        self.tela_saida.listar_venda()
 
     def abrir_saida(self):
         tela_saida.show()
@@ -66,7 +71,7 @@ class Tela_principal(QMainWindow, Ui_TelaMain):
             == 2
         ):
             self.msg_box.setStyleSheet("color: rgb(255, 0, 0);")
-            msg_cadastrar_produto = "Preencha todos os campos!"
+            msg_cadastrar_produto = "Produto Invalido!"
         elif (
             validacao_cadastro_produtos(cod_prod, produto, quantidade, preco_formatado)
             == 1
@@ -79,6 +84,13 @@ class Tela_principal(QMainWindow, Ui_TelaMain):
         ):
             self.msg_box.setStyleSheet("color: rgb(255, 0, 0);")
             msg_cadastrar_produto = "Produto Inválido!"
+        elif (
+            validacao_cadastro_produtos(cod_prod, produto, quantidade, preco_formatado)
+            == 6
+        ):
+            self.msg_box.setStyleSheet("color: rgb(85, 255, 0);")
+            msg_cadastrar_produto = "Produto Atualizado!"
+
         else:
             try:
                 cadastrar_produto(cod_prod, produto, quantidade, preco_formatado)
@@ -131,6 +143,7 @@ class Tela_login(QMainWindow, Ui_Login):
                 tela_login.close()
                 tela_login.lineEdit.setText("")
                 tela_login.lineEdit_2.setText("")
+                tela_saida.set_vendedor(usuario)
 
             elif validacao_login(usuario, senha) == 4:
                 tela_login.label_4.setStyleSheet("color: rgb(255, 0, 0);")
@@ -182,18 +195,33 @@ class Tela_saida(QMainWindow, Ui_tela_saida):
         self.setupUi(self)
         self.setWindowTitle("Saida")
         self.btn_gerar_saida.clicked.connect(lambda: self.venda())
-        self.listar_venda()
+
+    def set_vendedor(self, vendedor):
+        self.vendedor = str(vendedor).capitalize()
 
     def venda(self):
         cod_prod = self.line_codprod.text()
         qtd_venda = self.line_qtd.text()
-        vendedor = "python"  # tela_login.lineEdit.text()
-        venda_produto(cod_prod, qtd_venda, vendedor)
-        self.listar_venda()
+        vendedor = self.vendedor
+
+        if cod_prod == "" or qtd_venda == "" or vendedor == "":
+            self.msg_box.setStyleSheet("color: rgb(255, 0, 0);")
+            self.msg_box.setText("Preencha Todos os campos!")
+
+        try:
+            venda_produto(cod_prod, qtd_venda, vendedor)
+            self.msg_box.setStyleSheet("color: rgb(85, 255, 0);")
+            self.msg_box.setText("Venda adicionada!")
+            self.line_codprod.setText("")
+            self.line_qtd.setText("")
+            self.listar_venda()
+        except:
+            self.msg_box.setStyleSheet("color: rgb(255, 0, 0);")
+            self.msg_box.setText("Produto Inexistente!")
 
     def listar_venda(self):
         cod_prod = self.line_codprod.text()
-        vendedor = "python"  # tela_login.lineEdit.text()
+        vendedor = self.vendedor
         conn = sqlite3.connect("Vendas.db")
         cursor = conn.cursor()
         cursor.execute(f"SELECT * FROM '{vendedor}' WHERE vendedor = '{vendedor}'")
@@ -221,10 +249,11 @@ def logout():
 
 
 app = QApplication(sys.argv)
-tela_principal = Tela_principal()
+tela_saida = Tela_saida()
+tela_principal = Tela_principal(tela_saida)
 tela_login = Tela_login()
 tela_cadastro = Tela_cadastro()
-tela_saida = Tela_saida()
+
 
 tela_login.pushButton_2.clicked.connect(iniciar_tela_cadastro)
 tela_cadastro.pushButton.clicked.connect(Tela_cadastro.cadastrar_ui)
