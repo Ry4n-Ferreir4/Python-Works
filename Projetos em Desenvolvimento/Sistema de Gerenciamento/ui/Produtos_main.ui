@@ -79,7 +79,7 @@ transition: 0.2s all;
 </string>
          </property>
          <property name="text">
-          <string>Home</string>
+          <string>Página Inicial</string>
          </property>
         </widget>
        </item>
@@ -122,7 +122,7 @@ transition: 0.2s all;
 </string>
          </property>
          <property name="text">
-          <string>Produtos</string>
+          <string>Painel</string>
          </property>
         </widget>
        </item>
@@ -165,7 +165,7 @@ transition: 0.2s all;
 </string>
          </property>
          <property name="text">
-          <string>Venda</string>
+          <string>Vendas</string>
          </property>
         </widget>
        </item>
@@ -208,7 +208,7 @@ transition: 0.2s all;
 </string>
          </property>
          <property name="text">
-          <string>LogOut</string>
+          <string>Sair</string>
          </property>
         </widget>
        </item>
@@ -241,11 +241,11 @@ transition: 0.2s all;
         <item>
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tables">
            <attribute name="title">
-            <string>TreeWidget</string>
+            <string>Painel</string>
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_7">
             <item>
@@ -264,7 +264,7 @@ border-radius:10px;</string>
               <item>
                <widget class="QPushButton" name="btn_open">
                 <property name="text">
-                 <string>Abrir</string>
+                 <string>Procurar</string>
                 </property>
                </widget>
               </item>
@@ -293,6 +293,9 @@ border-radius:10px;</string>
                   </item>
                   <item>
                    <widget class="QTableWidget" name="tw_estoque">
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
                     <property name="verticalScrollBarPolicy">
                      <enum>Qt::ScrollBarAlwaysOn</enum>
                     </property>
@@ -302,6 +305,11 @@ border-radius:10px;</string>
                     <property name="autoScroll">
                      <bool>true</bool>
                     </property>
+                    <column>
+                     <property name="text">
+                      <string>Cod. Poduto</string>
+                     </property>
+                    </column>
                     <column>
                      <property name="text">
                       <string>Produto</string>
@@ -339,7 +347,18 @@ border-radius:10px;</string>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QTreeWidget" name="tw_saida">
+                   <widget class="QTableWidget" name="tw_saida">
+                    <property name="verticalScrollBarPolicy">
+                     <enum>Qt::ScrollBarAlwaysOn</enum>
+                    </property>
+                    <property name="horizontalScrollBarPolicy">
+                     <enum>Qt::ScrollBarAlwaysOn</enum>
+                    </property>
+                    <column>
+                     <property name="text">
+                      <string>ID Venda</string>
+                     </property>
+                    </column>
                     <column>
                      <property name="text">
                       <string>Produto</string>
@@ -357,7 +376,12 @@ border-radius:10px;</string>
                     </column>
                     <column>
                      <property name="text">
-                      <string>Usuario</string>
+                      <string>Vendedor</string>
+                     </property>
+                    </column>
+                    <column>
+                     <property name="text">
+                      <string>Data</string>
                      </property>
                     </column>
                    </widget>
@@ -658,7 +682,7 @@ border-radius:10px;</string>
                <property name="geometry">
                 <rect>
                  <x>330</x>
-                 <y>330</y>
+                 <y>380</y>
                  <width>161</width>
                  <height>41</height>
                 </rect>
@@ -773,6 +797,93 @@ transition: 0.2s all;
                </property>
                <property name="text">
                 <string>Preço R$</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="msg_box">
+               <property name="geometry">
+                <rect>
+                 <x>180</x>
+                 <y>320</y>
+                 <width>481</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial Black</family>
+                 <pointsize>14</pointsize>
+                </font>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color: rgb(85, 255, 0);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLineEdit" name="lineEdit_4">
+               <property name="geometry">
+                <rect>
+                 <x>400</x>
+                 <y>60</y>
+                 <width>201</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial</family>
+                 <pointsize>12</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(255, 255, 255);
+border-radius:10px;</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="maxLength">
+                <number>30</number>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Normal</enum>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_8">
+               <property name="geometry">
+                <rect>
+                 <x>230</x>
+                 <y>60</y>
+                 <width>161</width>
+                 <height>41</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Arial Black</family>
+                 <pointsize>14</pointsize>
+                </font>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="text">
+                <string>Cod. Produto</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>

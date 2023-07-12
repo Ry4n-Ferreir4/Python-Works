@@ -52,6 +52,7 @@ Importação de XML
 ## Atualizações
 
 1.0: Listagem de produtos funcional, login e cadastro funcionando, cadastro de produtos em produção
+2.0: Listagem de saida, fluxo de entrada e saida de podutos, tela de gerar saida, correções de logica 
 
 
 
